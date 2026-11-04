@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciberseguridad en Simple</title>
+    <style>
+        :root {
+            --bg-color: #0b0f0c;
+            --card-bg: #121814;
+            --accent-cyan: #00f0ff;
+            --accent-green: #00ff66;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --border-color: #1f3a29;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.05);
+            text-align: center;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo-container h1 {
+            font-size: 1.5rem;
+            color: var(--accent-green);
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .bio {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin: 25px 0 15px 0;
+            text-align: left;
+            border-left: 3px solid var(--accent-green);
+            padding-left: 10px;
+        }
+
+        .features-list {
+            text-align: left;
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .features-list li {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .features-list li strong {
+            color: var(--text-main);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background-color: #1a261f;
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 14px 20px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #24352b;
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 255, 102, 0.1);
+        }
+
+        .contacto-box {
+            background: #151f18;
+            border: 1px dashed var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        .contacto-box h3 {
+            font-size: 1rem;
+            color: var(--accent-cyan);
+            margin-bottom: 8px;
+        }
+
+        .contacto-box p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Cabecera -->
+        <div class="logo-container">
+            <h1>Ciberseguridad en Simple</h1>
+            <div class="tagline">Cuida tus datos — Sin tecnicismos</div>
+        </div>
+        <p class="bio">
+            Traduzco conceptos complejos de seguridad digital a un lenguaje sencillo. Aprende a proteger tus datos y los de tu familia en el día a día.
+        </p>
+
+        <!-- Por qué elegir este espacio -->
+        <div class="section-title">¿Por qué elegir este espacio?</div>
+        <ul class="features-list">
+            <li><strong>Cero tecnicismos:</strong> Explicaciones claras y directas para que entendai la ciberseguridad sin enredos.</li>
+            <li><strong>Protección real:</strong> Soluciones efectivas contra estafas, vulnerabilidades y ataques digitales cotidianos.</li>
+            <li><strong>Compromiso local:</strong> Enfoque riguroso desde Chile, pensado en proteger tu información y la de tu entorno.</li>
+        </ul>
+
+        <!-- Redes Sociales -->
+        <div class="section-title">Redes sociales oficiales</div>
+        <a href="https://youtube.com/@ciberseguridad.en.simple" target="_blank" class="btn">▶️ YouTube</a>
+        <a href="https://www.instagram.com/ciberseguridad.en.simple" target="_blank" class="btn">📲 Instagram</a>
+        <a href="https://www.tiktok.com/@ciberseguridadensimple" target="_blank" class="btn">🎵 TikTok</a>
+        <a href="https://www.facebook.com/people/Ciberseguridad-en-Simple/61595683211164/" target="_blank" class="btn">👍 Facebook</a>
+
+        <!-- Asesorías -->
+        <div class="contacto-box">
+            <h3>💬 Asesorías y Capacitaciones</h3>
+            <p>¿Necesitas blindar tu pyme o aprender seguridad digital desde cero? Hablemos por Mensaje Directo (DM) en mis redes sociales para coordinar asesorías o charlas personalizadas.</p>
+        </div>
+
+        <div class="footer">
+            © Ciberseguridad en Simple — Todos los derechos reservados.
+        </div>
+    </div>
+
+</body>
+</html>
