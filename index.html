@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ciberseguridad en Simple</title>
+    <!-- Importar iconos oficiales de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0b0f0c;
-            --card-bg: #121814;
-            --accent-cyan: #00f0ff;
-            --accent-green: #00ff66;
-            --text-main: #e0e0e0;
-            --text-muted: #a0a0a0;
-            --border-color: #1f3a29;
+            --bg-color: #050505;
+            --card-bg: #0c0c0c;
+            --neon-white: #ffffff;
+            --text-main: #f0f0f0;
+            --text-muted: #888888;
         }
 
         * {
@@ -29,18 +29,59 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 25px;
+            overflow-x: hidden;
+        }
+
+        /* Animación de entrada general */
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Animación para hacer girar el borde de neón */
+        @keyframes rotateNeon {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Contenedor principal con el borde de luz neón giratorio */
+        .neon-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 20px;
+            overflow: hidden;
+            padding: 3px; /* Grosor del borde de neón */
+            animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);
+        }
+
+        /* El haz de luz giratorio por detrás */
+        .neon-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                transparent,
+                transparent,
+                transparent,
+                rgba(255, 255, 255, 0.9)
+            );
+            animation: rotateNeon 5s linear infinite;
         }
 
         .container {
+            position: relative;
             width: 100%;
-            max-width: 480px;
             background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 30px 20px;
-            box-shadow: 0 0 20px rgba(0, 255, 102, 0.05);
+            border-radius: 18px;
+            padding: 35px 22px;
             text-align: center;
+            z-index: 1;
         }
 
         .logo-container {
@@ -48,45 +89,55 @@
         }
 
         .brand-logo {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             object-fit: cover;
             border-radius: 50%;
-            border: 2px solid var(--accent-green);
+            border: 2px solid var(--neon-white);
             margin-bottom: 15px;
-            box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.06);
         }
 
         .logo-container h1 {
             font-size: 1.5rem;
-            color: var(--accent-green);
-            letter-spacing: 1px;
-            margin-bottom: 5px;
+            color: var(--neon-white);
+            letter-spacing: 1.5px;
+            margin-bottom: 6px;
             text-transform: uppercase;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
         }
 
         .tagline {
             font-size: 0.9rem;
-            color: var(--accent-cyan);
-            margin-bottom: 15px;
-            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         .bio {
             font-size: 0.95rem;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.6;
             margin-bottom: 30px;
-            padding: 0 10px;
+            padding: 0 5px;
         }
 
         .section-title {
-            font-size: 1.1rem;
-            color: var(--text-main);
-            margin: 25px 0 15px 0;
+            font-size: 0.95rem;
+            color: var(--neon-white);
+            margin: 30px 0 15px 0;
             text-align: left;
-            border-left: 3px solid var(--accent-green);
+            border-left: 2px solid var(--neon-white);
             padding-left: 10px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
         }
 
         .features-list {
@@ -99,66 +150,100 @@
             font-size: 0.9rem;
             color: var(--text-muted);
             margin-bottom: 12px;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .features-list li strong {
-            color: var(--text-main);
+            color: var(--neon-white);
         }
 
         .btn {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
             width: 100%;
-            background-color: #1a261f;
+            background-color: #141414;
             color: var(--text-main);
             text-decoration: none;
             padding: 14px 20px;
             margin-bottom: 12px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            border: 1px solid #222222;
             font-weight: 600;
-            transition: all 0.2s ease-in-out;
-            text-align: center;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn i {
+            font-size: 1.2rem;
+            color: var(--neon-white);
+            transition: transform 0.3s ease;
         }
 
         .btn:hover {
-            background-color: #24352b;
-            border-color: var(--accent-green);
-            color: var(--accent-green);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 255, 102, 0.1);
+            background-color: #1f1f1f;
+            border-color: var(--neon-white);
+            color: var(--neon-white);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        .btn:hover i {
+            transform: scale(1.15);
         }
 
         .contacto-box {
-            background: #151f18;
-            border: 1px dashed var(--border-color);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 25px;
+            background: #111111;
+            border: 1px dashed #333333;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 30px;
             text-align: left;
+            transition: border-color 0.3s ease;
+        }
+
+        .contacto-box:hover {
+            border-color: var(--neon-white);
         }
 
         .contacto-box h3 {
-            font-size: 1rem;
-            color: var(--accent-cyan);
+            font-size: 0.95rem;
+            color: var(--neon-white);
             margin-bottom: 8px;
+            letter-spacing: 0.5px;
         }
 
         .contacto-box p {
             font-size: 0.85rem;
             color: var(--text-muted);
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .footer {
             margin-top: 30px;
             font-size: 0.75rem;
-            color: #555;
+            color: #444444;
+            letter-spacing: 0.5px;
         }
     </style>
 </head>
 <body>
 
+<<<<<<< HEAD
+    <!-- Contenedor con efecto de neón giratorio -->
+    <div class="neon-wrapper">
+        <div class="container">
+            <!-- Cabecera con Logo -->
+            <div class="logo-container">
+                <img src="logo.jpg" alt="Ciberseguridad en Simple" class="brand-logo">
+                <h1>Ciberseguridad en Simple</h1>
+                <div class="tagline">Cuida tus datos — Sin tecnicismos</div>
+            </div>
+            <p class="bio">
+                Traduzco conceptos complejos de seguridad digital a un lenguaje sencillo. Aprende a proteger tus datos y los de tu familia en el día a día.
+            </p>
+=======
     <div class="container">
         <!-- Cabecera con Logo -->
         <div class="logo-container">
@@ -169,22 +254,53 @@
         <p class="bio">
             Traduzco conceptos complejos de seguridad digital a un lenguaje sencillo. Aprende a proteger tus datos y los de tu familia en el día a día.
         </p>
+>>>>>>> 866748eb0e28c9a7d01915ecb95f7fadf6d379d2
 
-        <!-- Por qué elegir este espacio -->
-        <div class="section-title">¿Por qué elegir este espacio?</div>
-        <ul class="features-list">
-            <li><strong>Cero tecnicismos:</strong> Explicaciones claras y directas para que entendai la ciberseguridad sin enredos.</li>
-            <li><strong>Protección real:</strong> Soluciones efectivas contra estafas, vulnerabilidades y ataques digitales cotidianos.</li>
-            <li><strong>Compromiso local:</strong> Enfoque riguroso desde Chile, pensado en proteger tu información y la de tu entorno.</li>
-        </ul>
+            <!-- Por qué elegir este espacio -->
+            <div class="section-title">¿Por qué elegir este espacio?</div>
+            <ul class="features-list">
+                <li><strong>Cero tecnicismos:</strong> Explicaciones claras y directas para que entendai la ciberseguridad sin enredos.</li>
+                <li><strong>Protección real:</strong> Soluciones efectivas contra estafas, vulnerabilidades y ataques digitales cotidianos.</li>
+                <li><strong>Compromiso local:</strong> Enfoque riguroso desde Chile, pensado en proteger tu información y la de tu entorno.</li>
+            </ul>
 
-        <!-- Redes Sociales -->
-        <div class="section-title">Redes sociales oficiales</div>
-        <a href="https://youtube.com/@ciberseguridad.en.simple" target="_blank" class="btn">▶️ YouTube</a>
-        <a href="https://www.instagram.com/ciberseguridad.en.simple" target="_blank" class="btn">📲 Instagram</a>
-        <a href="https://www.tiktok.com/@ciberseguridadensimple" target="_blank" class="btn">🎵 TikTok</a>
-        <a href="https://www.facebook.com/people/Ciberseguridad-en-Simple/61595683211164/" target="_blank" class="btn">👍 Facebook</a>
+            <!-- Redes Sociales con Iconos Reales -->
+            <div class="section-title">Redes sociales oficiales</div>
+            <a href="https://youtube.com/@ciberseguridad.en.simple" target="_blank" class="btn">
+                <i class="fa-brands fa-youtube"></i> YouTube
+            </a>
+            <a href="https://www.instagram.com/ciberseguridad.en.simple" target="_blank" class="btn">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://www.tiktok.com/@ciberseguridadensimple" target="_blank" class="btn">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+            </a>
+            <a href="https://www.facebook.com/people/Ciberseguridad-en-Simple/61595683211164/" target="_blank" class="btn">
+                <i class="fa-brands fa-facebook"></i> Facebook
+            </a>
 
+<<<<<<< HEAD
+            <!-- Portafolio / Proyectos -->
+            <div class="section-title">Portafolio y proyectos</div>
+            <a href="https://www.masterdg.cl" target="_blank" class="btn">
+                <i class="fa-solid fa-globe"></i> MasterDG — Desarrollo Web
+            </a>
+
+            <!-- Asesorías -->
+            <div class="contacto-box">
+                <h3>💬 Asesorías y Capacitaciones</h3>
+                <p>¿Necesitas blindar tu pyme o aprender seguridad digital desde cero? Hablemos por Mensaje Directo (DM) en mis redes sociales para coordinar asesorías o charlas personalizadas.</p>
+            </div>
+
+            <div class="footer">
+                © Ciberseguridad en Simple — Todos los derechos reservados.
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+=======
         <!-- Portafolio / Proyectos -->
         <div class="section-title">Portafolio y proyectos</div>
         <a href="https://www.masterdg.cl" target="_blank" class="btn">🌐 MasterDG — Desarrollo Web</a>
@@ -197,3 +313,5 @@
 
         <div class="footer">
             © Ciberseguridad en
+>>>>>>> 866748eb0e28c9a7d01915ecb95f7fadf6d379d2
+
