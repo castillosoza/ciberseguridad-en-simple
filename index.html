@@ -11,6 +11,7 @@
             --bg-color: #050505;
             --card-bg: #0c0c0c;
             --neon-white: #ffffff;
+            --accent-blue: #0088ff;
             --text-main: #f0f0f0;
             --text-muted: #888888;
         }
@@ -81,27 +82,39 @@
         }
 
         .logo-container {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
+        /* Recorta automáticamente tu logo.jpg para mostrar solo el escudo circular y ocultar el "Sin humo" de la imagen */
         .brand-logo {
-            width: 100%;
-            max-height: 160px;
-            object-fit: contain;
-            border-radius: 10px;
+            width: 115px;
+            height: 115px;
+            object-fit: cover;
+            object-position: 14% center;
+            border-radius: 50%;
+            border: 2px solid var(--accent-blue);
+            box-shadow: 0 0 20px rgba(0, 136, 255, 0.35);
             margin-bottom: 15px;
             transition: transform 0.3s ease;
         }
 
         .brand-logo:hover {
-            transform: scale(1.02);
+            transform: scale(1.05);
+        }
+
+        .logo-container h1 {
+            font-size: 1.45rem;
+            color: var(--neon-white);
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
         }
 
         .tagline {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-top: 5px;
-            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--accent-blue);
+            font-weight: 600;
             letter-spacing: 0.5px;
         }
 
@@ -217,10 +230,11 @@
 
     <div class="neon-wrapper">
         <div class="container">
-            <!-- Cabecera con tu Logo Oficial -->
+            <!-- Cabecera: Escudo recortado del logo + Título sin "Sin humo" -->
             <div class="logo-container">
                 <img src="logo.jpg" alt="Ciberseguridad en Simple" class="brand-logo">
-                <div class="tagline">Sin tecnicismos</div>
+                <h1>Ciberseguridad en Simple</h1>
+                <div class="tagline">Cuida tus datos • Sin tecnicismos</div>
             </div>
             
             <p class="bio">
