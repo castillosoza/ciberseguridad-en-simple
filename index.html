@@ -30,7 +30,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 25px;
+            padding: 20px;
             overflow-x: hidden;
         }
 
@@ -47,12 +47,13 @@
         .neon-wrapper {
             position: relative;
             width: 100%;
-            max-width: 480px;
+            max-width: 480px; /* Vista móvil por defecto */
             border-radius: 20px;
             overflow: hidden;
             padding: 3px;
             animation: slideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);
+            transition: max-width 0.3s ease;
         }
 
         .neon-wrapper::before {
@@ -81,11 +82,16 @@
             z-index: 1;
         }
 
+        .layout-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
         .logo-container {
             margin-bottom: 20px;
         }
 
-        /* Recorta automáticamente tu logo.jpg para mostrar solo el escudo circular y ocultar el "Sin humo" de la imagen */
         .brand-logo {
             width: 115px;
             height: 115px;
@@ -122,14 +128,14 @@
             font-size: 0.95rem;
             color: var(--text-muted);
             line-height: 1.6;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             padding: 0 5px;
         }
 
         .section-title {
             font-size: 0.95rem;
             color: var(--neon-white);
-            margin: 30px 0 15px 0;
+            margin: 25px 0 15px 0;
             text-align: left;
             border-left: 2px solid var(--neon-white);
             padding-left: 10px;
@@ -141,7 +147,7 @@
         .features-list {
             text-align: left;
             list-style: none;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
         .features-list li {
@@ -155,16 +161,16 @@
             color: var(--neon-white);
         }
 
-        /* Contenedor responsivo para el video de YouTube */
+        /* Video responsivo 16:9 */
         .video-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* Proporción 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             border-radius: 12px;
             border: 1px solid #222222;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             box-shadow: 0 6px 20px rgba(0, 136, 255, 0.15);
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
@@ -183,6 +189,12 @@
             border: 0;
         }
 
+        .social-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
         .btn {
             display: flex;
             align-items: center;
@@ -193,7 +205,6 @@
             color: var(--text-main);
             text-decoration: none;
             padding: 14px 20px;
-            margin-bottom: 12px;
             border-radius: 10px;
             border: 1px solid #222222;
             font-weight: 600;
@@ -224,7 +235,7 @@
             border: 1px dashed #333333;
             padding: 18px;
             border-radius: 10px;
-            margin-top: 30px;
+            margin-top: 25px;
             text-align: left;
             transition: border-color 0.3s ease;
         }
@@ -248,9 +259,77 @@
 
         .footer {
             margin-top: 30px;
-            font-size: 0.75rem;
-            color: #444444;
+            padding-top: 20px;
+            border-top: 1px solid #1a1a1a;
+            font-size: 0.78rem;
+            color: #555555;
             letter-spacing: 0.5px;
+        }
+
+        /* =========================================================
+           VISTA DE ESCRITORIO (Pantallas desde 850px hacia arriba)
+           ========================================================= */
+        @media (min-width: 850px) {
+            body {
+                padding: 40px;
+            }
+
+            .neon-wrapper {
+                max-width: 1050px; /* Se expande para aprovechar monitores */
+            }
+
+            .container {
+                padding: 45px 50px;
+            }
+
+            .layout-grid {
+                display: grid;
+                grid-template-columns: 1fr 1.2fr; /* Izquierda info, derecha multimedia y links */
+                gap: 50px;
+                align-items: start;
+                text-align: left;
+            }
+
+            /* Columna izquierda alineada para lectura web */
+            .col-left {
+                position: sticky;
+                top: 20px;
+            }
+
+            .logo-container {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                text-align: left;
+                margin-bottom: 22px;
+            }
+
+            .brand-logo {
+                width: 95px;
+                height: 95px;
+                margin-bottom: 0;
+                flex-shrink: 0;
+            }
+
+            .logo-container h1 {
+                font-size: 1.6rem;
+            }
+
+            .bio {
+                padding: 0;
+                font-size: 1rem;
+            }
+
+            .col-right .section-title:first-child {
+                margin-top: 0;
+            }
+
+            /* Botones de redes en cuadrícula de 2x2 en escritorio */
+            .social-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
         }
     </style>
 </head>
@@ -258,61 +337,69 @@
 
     <div class="neon-wrapper">
         <div class="container">
-            <!-- Cabecera: Escudo recortado del logo + Título sin "Sin humo" -->
-            <div class="logo-container">
-                <img src="logo.jpg" alt="Ciberseguridad en Simple" class="brand-logo">
-                <h1>Ciberseguridad en Simple</h1>
-                <div class="tagline">Cuida tus datos • Sin tecnicismos</div>
-            </div>
-            
-            <p class="bio">
-                Traducimos conceptos complejos de seguridad digital a un lenguaje sencillo. Aprende a proteger tus datos y los de tu familia en el día a día.
-            </p>
+            <div class="layout-grid">
+                
+                <!-- COLUMNA IZQUIERDA (Marca, Bio y Propuesta de Valor) -->
+                <div class="col-left">
+                    <div class="logo-container">
+                        <img src="logo.jpg" alt="Ciberseguridad en Simple" class="brand-logo">
+                        <div>
+                            <h1>Ciberseguridad en Simple</h1>
+                            <div class="tagline">Cuida tus datos • Sin tecnicismos</div>
+                        </div>
+                    </div>
+                    
+                    <p class="bio">
+                        Traducimos conceptos complejos de seguridad digital a un lenguaje sencillo. Aprende a proteger tus datos y los de tu familia en el día a día.
+                    </p>
 
-            <!-- Por qué elegir este espacio -->
-            <div class="section-title">¿Por qué elegir este espacio?</div>
-            <ul class="features-list">
-                <li><strong>Cero tecnicismos:</strong> Explicaciones claras y directas para que entiendas la ciberseguridad sin enredos.</li>
-                <li><strong>Protección real:</strong> Soluciones efectivas contra estafas, vulnerabilidades y ataques digitales cotidianos.</li>
-                <li><strong>Compromiso local:</strong> Enfoque riguroso pensado en proteger tu información y la de tu entorno.</li>
-            </ul>
+                    <div class="section-title">¿Por qué elegir este espacio?</div>
+                    <ul class="features-list">
+                        <li><strong>Cero tecnicismos:</strong> Explicaciones claras y directas para que entiendas la ciberseguridad sin enredos.</li>
+                        <li><strong>Protección real:</strong> Soluciones efectivas contra estafas, vulnerabilidades y ataques digitales cotidianos.</li>
+                        <li><strong>Compromiso local:</strong> Enfoque riguroso pensado en proteger tu información y la de tu entorno.</li>
+                    </ul>
 
-            <!-- Video Destacado -->
-            <div class="section-title">Video destacado</div>
-            <div class="video-wrapper">
-                <iframe 
-                    src="https://www.youtube.com/embed/Wq5RYQA4_8Y" 
-                    title="Video de Ciberseguridad en Simple" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-                </iframe>
-            </div>
+                    <div class="contacto-box">
+                        <h3>💬 Asesorías y Capacitaciones</h3>
+                        <p>¿Necesitas blindar tu PYME o aprender seguridad digital desde cero? Hablemos por Mensaje Directo (DM) en mis redes sociales para coordinar asesorías o charlas personalizadas.</p>
+                    </div>
+                </div>
 
-            <!-- Redes Sociales con Iconos Reales -->
-            <div class="section-title">Redes sociales oficiales</div>
-            <a href="https://youtube.com/@ciberseguridad.en.simple" target="_blank" class="btn">
-                <i class="fa-brands fa-youtube"></i> YouTube
-            </a>
-            <a href="https://www.instagram.com/ciberseguridad.en.simple" target="_blank" class="btn">
-                <i class="fa-brands fa-instagram"></i> Instagram
-            </a>
-            <a href="https://www.tiktok.com/@ciberseguridadensimple" target="_blank" class="btn">
-                <i class="fa-brands fa-tiktok"></i> TikTok
-            </a>
-            <a href="https://www.facebook.com/people/Ciberseguridad-en-Simple/61595683211164/" target="_blank" class="btn">
-                <i class="fa-brands fa-facebook"></i> Facebook
-            </a>
+                <!-- COLUMNA DERECHA (Video Destacado, Redes y Portafolio) -->
+                <div class="col-right">
+                    <div class="section-title">Video destacado</div>
+                    <div class="video-wrapper">
+                        <iframe 
+                            src="https://www.youtube.com/embed/Wq5RYQA4_8Y" 
+                            title="Video de Ciberseguridad en Simple" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
 
-            <!-- Portafolio / Proyectos -->
-            <div class="section-title">Portafolio y proyectos</div>
-            <a href="https://www.masterdg.cl" target="_blank" class="btn">
-                <i class="fa-solid fa-globe"></i> MasterDG — Desarrollo Web
-            </a>
+                    <div class="section-title">Redes sociales oficiales</div>
+                    <div class="social-grid">
+                        <a href="https://youtube.com/@ciberseguridad.en.simple" target="_blank" class="btn">
+                            <i class="fa-brands fa-youtube"></i> YouTube
+                        </a>
+                        <a href="https://www.instagram.com/ciberseguridad.en.simple" target="_blank" class="btn">
+                            <i class="fa-brands fa-instagram"></i> Instagram
+                        </a>
+                        <a href="https://www.tiktok.com/@ciberseguridadensimple" target="_blank" class="btn">
+                            <i class="fa-brands fa-tiktok"></i> TikTok
+                        </a>
+                        <a href="https://www.facebook.com/people/Ciberseguridad-en-Simple/61595683211164/" target="_blank" class="btn">
+                            <i class="fa-brands fa-facebook"></i> Facebook
+                        </a>
+                    </div>
 
-            <!-- Asesorías -->
-            <div class="contacto-box">
-                <h3>💬 Asesorías y Capacitaciones</h3>
-                <p>¿Necesitas blindar tu PYME o aprender seguridad digital desde cero? Hablemos por Mensaje Directo (DM) en mis redes sociales para coordinar asesorías o charlas personalizadas.</p>
+                    <div class="section-title">Portafolio y proyectos</div>
+                    <a href="https://www.masterdg.cl" target="_blank" class="btn">
+                        <i class="fa-solid fa-globe"></i> MasterDG — Desarrollo Web
+                    </a>
+                </div>
+
             </div>
 
             <div class="footer">
