@@ -155,6 +155,34 @@
             color: var(--neon-white);
         }
 
+        /* Contenedor responsivo para el video de YouTube */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Proporción 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid #222222;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 20px rgba(0, 136, 255, 0.15);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-wrapper:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 6px 25px rgba(0, 136, 255, 0.35);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         .btn {
             display: flex;
             align-items: center;
@@ -248,6 +276,17 @@
                 <li><strong>Protección real:</strong> Soluciones efectivas contra estafas, vulnerabilidades y ataques digitales cotidianos.</li>
                 <li><strong>Compromiso local:</strong> Enfoque riguroso pensado en proteger tu información y la de tu entorno.</li>
             </ul>
+
+            <!-- Video Destacado -->
+            <div class="section-title">Video destacado</div>
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/Wq5RYQA4_8Y" 
+                    title="Video de Ciberseguridad en Simple" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
 
             <!-- Redes Sociales con Iconos Reales -->
             <div class="section-title">Redes sociales oficiales</div>
